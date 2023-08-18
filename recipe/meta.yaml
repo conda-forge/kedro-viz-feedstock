@@ -11,29 +11,52 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install ./package -vv
-  number: 0
+  script:
+    - echo {" --------------------------------------------------------Cleans out any and all existing build --------------------------------------------------------------------------"}
+    - rm -rf build package/build package/dist package/kedro_viz/html pip-wheel-metadata package/kedro_viz.egg-info
+    - echo {" --------------------------------------------------------this replaces the metadata-code-themes.scss in the /src/components/metadata/styles/ to source locally ----------"}
+    - cp {{ RECIPE_DIR }}/metadata-code-themes.scss {{ SRC_DIR }}/src/components/metadata/styles/metadata-code-themes.scss
+    - echo {" --------------------------------------------------------this adds the local a11y-light.css in the metadata/styles dir---------------------------------------------------"}
+    - cp {{ RECIPE_DIR }}/a11y-light.css {{ SRC_DIR }}/src/components/metadata/styles/a11y-light.css
+    - echo {" --------------------------------------------------------this adds the local a11y-dark.css in the metadata/styles dir where metadata-code-themes.scss was replaced-------"}
+    - cp {{ RECIPE_DIR }}/a11y-dark.css {{ SRC_DIR }}/src/components/metadata/styles/a11y-dark.css
+    - echo {" --------------------------------------------------------npm install sass react-scripts ---------------------------------------------------------------------------------"}
+    - npm install sass react-scripts
+    - echo {" --------------------------------------------------------npm install --save react@17.0.2  --------------------------------------------------------------------------------"}
+    - npm install --save react@17.0.2  #–-save-dev:
+    - echo {" --------------------------------------------------------NODE_OPTIONS=--openssl-legacy-provider npm run build ------------------------------------------------------------"}
+    - NODE_OPTIONS=--openssl-legacy-provider npm run build
+    - echo {" --------------------------------------------------------cp -R build {{ SRC_DIR }}/package/kedro_viz/html ----------------------------------------------------------------"}
+    - cp -R build {{ SRC_DIR }}/package/kedro_viz/html
+    - echo {" --------------------------------------------------------npm cache clean --force -----------------------------------------------------------------------------------------"}
+    - npm cache clean --force
+    - {{ PYTHON }} -m pip install ./package -vv
+  number: 1
 
 requirements:
+  build:
+    - nodejs >16.0,<17.0
   host:
     - python >=3.7,<3.11
     - pip
+    - nodejs >16.0,<17.0
+    - yarn
   run:
     - python >=3.7,<3.11
     - semver >=2.10
     - kedro >=0.17.5
-    - ipython <9.0,>=7.0.0
-    - fastapi <0.96.0,>=0.73.0
-    - fsspec <2024.1,>=2021.4
-    - aiofiles ==22.1.0
-    - uvicorn >=0.22.0,<0.23.dev0
-    - watchgod >=0.8.2,<0.9.dev0
+    - ipython >=7.0.0,<9.0
+    - fastapi >=0.73.0,<0.96.0
+    - fsspec >=2021.4,<2024.1
+    - aiofiles ==22.1.0  # Pinned to 22.1.0
+    - uvicorn-standard >=0.22.0,<0.23.0  # Limited to <0.23.0
+    - watchgod >=0.8.2,<0.9.0
     - plotly >=4.0
     - pandas >=0.24
-    - sqlalchemy <3,>=1.4
-    - strawberry-graphql <1.0,>=0.192.0
+    - sqlalchemy >=1.4,<3
+    - strawberry-graphql >=0.192.0,<1.0
     - networkx >=1.0
-    - orjson >=3.9,<4.dev0
+    - orjson >=3.9,<4.0
     - secure >=0.3.0
 
 test:
