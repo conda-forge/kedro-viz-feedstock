@@ -1,5 +1,5 @@
 {% set name = "kedro-viz" %}
-{% set version = "6.3.4" %}
+{% set version = "6.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,40 +7,39 @@ package:
 
 source:
   url: https://github.com/kedro-org/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c0e9acdb5fb364172a535e8414f0e1c2a648ed0faa2694d7b912580af5e514e5
+  sha256: 3fb5b867e319e171cb6cb8dba399f86407847c077262bc4fe4b1a2415fe18c85
 
 build:
   noarch: python
   script:
     - echo {" --------------------------------------------------------Cleans out any and all existing build --------------------------------------------------------------------------"}
     - rm -rf build package/build package/dist package/kedro_viz/html pip-wheel-metadata package/kedro_viz.egg-info
+
     - echo {" --------------------------------------------------------this replaces the metadata-code-themes.scss in the /src/components/metadata/styles/ to source locally ----------"}
     - cp {{ RECIPE_DIR }}/metadata-code-themes.scss {{ SRC_DIR }}/src/components/metadata/styles/metadata-code-themes.scss
     - echo {" --------------------------------------------------------this adds the local a11y-light.css in the metadata/styles dir---------------------------------------------------"}
     - cp {{ RECIPE_DIR }}/a11y-light.css {{ SRC_DIR }}/src/components/metadata/styles/a11y-light.css
     - echo {" --------------------------------------------------------this adds the local a11y-dark.css in the metadata/styles dir where metadata-code-themes.scss was replaced-------"}
     - cp {{ RECIPE_DIR }}/a11y-dark.css {{ SRC_DIR }}/src/components/metadata/styles/a11y-dark.css
+
     - echo {" --------------------------------------------------------npm install sass react-scripts ---------------------------------------------------------------------------------"}
-    - npm install sass react-scripts
-    - echo {" --------------------------------------------------------npm install --save react@17.0.2  --------------------------------------------------------------------------------"}
-    - npm install --save react@17.0.2  #–-save-dev:
+    - npm install --save react@17.0.2 react-dom@17.0.2 sass@1.54.4 react-scripts@4.0.3 cypress@12.14.0
+
     - echo {" --------------------------------------------------------NODE_OPTIONS=--openssl-legacy-provider npm run build ------------------------------------------------------------"}
     - NODE_OPTIONS=--openssl-legacy-provider npm run build
+
     - echo {" --------------------------------------------------------cp -R build {{ SRC_DIR }}/package/kedro_viz/html ----------------------------------------------------------------"}
     - cp -R build {{ SRC_DIR }}/package/kedro_viz/html
-    - echo {" --------------------------------------------------------npm cache clean --force -----------------------------------------------------------------------------------------"}
-    - npm cache clean --force
+
     - {{ PYTHON }} -m pip install ./package -vv
-  number: 1
+
+  number: 0
 
 requirements:
-  build:
-    - nodejs >16.0,<17.0
   host:
     - python >=3.7,<3.11
     - pip
     - nodejs >16.0,<17.0
-    - yarn
   run:
     - python >=3.7,<3.11
     - semver >=2.10
@@ -70,6 +69,8 @@ test:
 about:
   home: https://github.com/kedro-org/kedro-viz
   summary: Kedro-Viz helps visualise Kedro data and analytics pipelines
+  doc_url: https://demo.kedro.org
+  dev_url: https://github.com/kedro-org/kedro-viz
   license: BSD-3-Clause AND Apache-2.0
   license_file:
     - LICENSE.md
