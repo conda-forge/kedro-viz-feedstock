@@ -9,6 +9,10 @@ Package license: BSD-3-Clause AND Apache-2.0
 
 Summary: Kedro-Viz helps visualise Kedro data and analytics pipelines
 
+Development: https://github.com/kedro-org/kedro-viz
+
+Documentation: https://demo.kedro.org
+
 Current build status
 ====================
 
