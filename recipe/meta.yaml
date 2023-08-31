@@ -1,5 +1,5 @@
 {% set name = "kedro-viz" %}
-{% set version = "6.4.0" %}
+{% set version = "6.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/kedro-org/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 3fb5b867e319e171cb6cb8dba399f86407847c077262bc4fe4b1a2415fe18c85
+  sha256: acc21e32d74f1ed3767559fbf0ede24d93b813c2736b21d9e498059ed905775d
 
 build:
   noarch: python
@@ -37,24 +37,24 @@ build:
 
 requirements:
   host:
-    - python >=3.7,<3.11
+    - python >=3.7
     - pip
-    - nodejs >16.0,<17.0
+    - nodejs >16.0,<21.0
   run:
-    - python >=3.7,<3.11
+    - python >=3.7
     - semver >=2.10
     - kedro >=0.17.5
-    - ipython >=7.0.0,<9.0
+    - ipython >=7.0.0
     - fastapi >=0.73.0,<0.96.0
     - fsspec >=2021.4,<2024.1
     - aiofiles ==22.1.0  # Pinned to 22.1.0
     - uvicorn-standard >=0.22.0,<0.23.0  # Limited to <0.23.0
     - watchgod >=0.8.2,<0.9.0
     - plotly >=4.0
-    - pandas >=0.24
+    - pandas >=1.3
     - sqlalchemy >=1.4,<3
     - strawberry-graphql >=0.192.0,<1.0
-    - networkx >=1.0
+    - networkx >=2.5
     - orjson >=3.9,<4.0
     - secure >=0.3.0
 
