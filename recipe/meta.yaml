@@ -33,7 +33,7 @@ build:
 
     - {{ PYTHON }} -m pip install ./package -vv
 
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -58,6 +58,7 @@ requirements:
     - networkx >=2.5
     - orjson >=3.9,<4.0
     - secure >=0.3.0
+    - httpx >=0.25.0
 
 test:
   imports:
