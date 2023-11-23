@@ -48,7 +48,7 @@ requirements:
     - pydantic <2
     - fsspec >=2021.4,<2024.1
     - aiofiles >=22.1.0
-    - uvicorn-standard >=0.22.0,<0.23.0  # Limited to <0.23.0
+    - uvicorn-standard >=0.22.0,<0.23.0 # Limited to <0.23.0
     - watchgod >=0.8.2,<0.9.0
     - plotly >=4.0
     - pandas >=1.3
@@ -57,8 +57,8 @@ requirements:
     - networkx >=2.5
     - orjson >=3.9,<4.0
     - secure >=0.3.0
-    - fastapi >=0.73.0,<0.200.0  # Limted for <0.104.0 for python<3.8
-    - s3fs  # PiP is using fsspec[s3] s3fs is derived dependecy for conda
+    - fastapi >=0.73.0,<0.200.0 # Limted to <0.104.0 for python<3.8
+    - s3fs # PiP is using fsspec[s3] s3fs is derived dependecy for conda
 
 test:
   imports:
