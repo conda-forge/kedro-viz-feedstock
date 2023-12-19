@@ -23,10 +23,10 @@ build:
     - cp {{ RECIPE_DIR }}/a11y-dark.css {{ SRC_DIR }}/src/components/metadata/styles/a11y-dark.css
 
     - echo {" --------------------------------------------------------npm install sass react-scripts ---------------------------------------------------------------------------------"}
-    - npm install --save react@17.0.2 react-dom@17.0.2 sass@1.54.4 react-scripts@4.0.3 cypress@12.14.0
+    - npm install --save react@18.2.0 react-dom@18.2.0 sass@1.54.4 react-scripts@4.0.3 cypress@13.3.0
 
     - echo {" --------------------------------------------------------NODE_OPTIONS=--openssl-legacy-provider npm run build ------------------------------------------------------------"}
-    - NODE_OPTIONS=--openssl-legacy-provider npm run build
+    #- NODE_OPTIONS=--openssl-legacy-provider npm run build
 
     - echo {" --------------------------------------------------------cp -R build {{ SRC_DIR }}/package/kedro_viz/html ----------------------------------------------------------------"}
     - cp -R build {{ SRC_DIR }}/package/kedro_viz/html
