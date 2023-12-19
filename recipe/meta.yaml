@@ -37,16 +37,18 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3.8
     - pip
     - nodejs >16.0,<21.0
   run:
-    - python >=3.7
+    - python >=3.8
     - packaging >=23.0,<24.0
-    - kedro >=0.17.5
+    - kedro >=0.18.0
     - ipython >=7.0.0,<9.0
+    - fastapi >=0.73.0,<0.200.0
     - pydantic <2
     - fsspec >=2021.4,<2024.1
+    - s3fs >=2021.4,<2024.1
     - aiofiles >=22.1.0
     - uvicorn-standard >=0.22.0,<0.23.0 # Limited to <0.23.0
     - watchgod >=0.8.2,<0.9.0
@@ -57,8 +59,6 @@ requirements:
     - networkx >=2.5
     - orjson >=3.9,<4.0
     - secure >=0.3.0
-    - fastapi >=0.73.0,<0.200.0 # Limted to <0.104.0 for py<3.8
-    - s3fs # PiP is using fsspec with s3 selector, so s3fs is derived dependecy for conda
 
 test:
   imports:
