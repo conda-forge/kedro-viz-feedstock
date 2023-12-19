@@ -23,7 +23,7 @@ build:
     - cp {{ RECIPE_DIR }}/a11y-dark.css {{ SRC_DIR }}/src/components/metadata/styles/a11y-dark.css
 
     - echo {" --------------------------------------------------------npm install sass react-scripts ---------------------------------------------------------------------------------"}
-    - npm install --save react@18.2.0 react-dom@18.2.0 sass@1.54.4 react-scripts@4.0.3 cypress@13.3.0
+    - npm install --save react@18.2.0 react-dom@18.2.0 sass@1.69.5 react-scripts@4.0.3 cypress@13.6.0
 
     - echo {" --------------------------------------------------------NODE_OPTIONS=--openssl-legacy-provider npm run build ------------------------------------------------------------"}
     #- NODE_OPTIONS=--openssl-legacy-provider npm run build
