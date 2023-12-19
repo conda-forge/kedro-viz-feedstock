@@ -1,5 +1,5 @@
 {% set name = "kedro-viz" %}
-{% set version = "6.7.0" %}
+{% set version = "7.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/kedro-org/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: cbf9b74827a476d38a0e5f2535cac92131c68e7e89689787163643e1fbd8d2de
+  sha256: 8c34cd34f53a11237451e441f00a672d11096569a6bec296abe516f1fe317050
 
 build:
   noarch: python
@@ -23,7 +23,7 @@ build:
     - cp {{ RECIPE_DIR }}/a11y-dark.css {{ SRC_DIR }}/src/components/metadata/styles/a11y-dark.css
 
     - echo {" --------------------------------------------------------npm install sass react-scripts ---------------------------------------------------------------------------------"}
-    - npm install --save react@17.0.2 react-dom@17.0.2 sass@1.54.4 react-scripts@4.0.3 cypress@12.14.0
+    - npm install --save react@18.2.0 react-dom@18.2.0 sass@1.69.5 react-scripts@4.0.3 cypress@13.6.0 eslint-plugin-cypress@2.15.1 jest@26.6.0
 
     - echo {" --------------------------------------------------------NODE_OPTIONS=--openssl-legacy-provider npm run build ------------------------------------------------------------"}
     - NODE_OPTIONS=--openssl-legacy-provider npm run build
@@ -37,16 +37,18 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3.8
     - pip
     - nodejs >16.0,<21.0
   run:
-    - python >=3.7
+    - python >=3.8
     - packaging >=23.0,<24.0
-    - kedro >=0.17.5
+    - kedro >=0.18.0
     - ipython >=7.0.0,<9.0
+    - fastapi >=0.73.0,<0.200.0
     - pydantic <2
     - fsspec >=2021.4,<2024.1
+    - s3fs >=2021.4,<2024.1
     - aiofiles >=22.1.0
     - uvicorn-standard >=0.22.0,<0.23.0 # Limited to <0.23.0
     - watchgod >=0.8.2,<0.9.0
@@ -57,8 +59,6 @@ requirements:
     - networkx >=2.5
     - orjson >=3.9,<4.0
     - secure >=0.3.0
-    - fastapi >=0.73.0,<0.200.0 # Limted to <0.104.0 for py<3.8
-    - s3fs # PiP is using fsspec with s3 selector, so s3fs is derived dependecy for conda
 
 test:
   imports:
