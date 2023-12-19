@@ -27,6 +27,7 @@ build:
 
     - echo {" --------------------------------------------------------NODE_OPTIONS=--openssl-legacy-provider npm run build ------------------------------------------------------------"}
     #- NODE_OPTIONS=--openssl-legacy-provider npm run build
+    - npm run build
 
     - echo {" --------------------------------------------------------cp -R build {{ SRC_DIR }}/package/kedro_viz/html ----------------------------------------------------------------"}
     - cp -R build {{ SRC_DIR }}/package/kedro_viz/html
