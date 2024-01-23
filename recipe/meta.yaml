@@ -1,5 +1,5 @@
 {% set name = "kedro-viz" %}
-{% set version = "7.0.0" %}
+{% set version = "7.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/kedro-org/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 8c34cd34f53a11237451e441f00a672d11096569a6bec296abe516f1fe317050
+  sha256: 870984880242c51947d72e95e846bcf969885d11e9f042f6f16f8d025a6d3759
 
 build:
   noarch: python
@@ -50,7 +50,7 @@ requirements:
     - fsspec >=2021.4,<2024.1
     - s3fs >=2021.4,<2024.1
     - aiofiles >=22.1.0
-    - uvicorn-standard >=0.22.0,<0.23.0 # Limited to <0.23.0
+    - uvicorn-standard >=0.25.0,<0.26.0
     - watchgod >=0.8.2,<0.9.0
     - plotly >=4.0
     - pandas >=1.3
