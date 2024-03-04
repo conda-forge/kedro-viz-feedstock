@@ -1,5 +1,5 @@
 {% set name = "kedro-viz" %}
-{% set version = "7.1.0" %}
+{% set version = "8.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/kedro-org/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 870984880242c51947d72e95e846bcf969885d11e9f042f6f16f8d025a6d3759
+  sha256: 0e39f6358f069424e902dd00ea7a123d9e0bccfd913442b09da9cc4c180180b0
 
 build:
   noarch: python
@@ -37,18 +37,17 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - python >=3.9
     - pip
     - nodejs >16.0,<21.0
   run:
-    - python >=3.8
+    - python >=3.9
     - packaging >=23.0,<24.0
     - kedro >=0.18.0
     - ipython >=7.0.0,<9.0
-    - fastapi >=0.73.0,<0.200.0
-    - pydantic <2
-    - fsspec >=2021.4,<2024.1
-    - s3fs >=2021.4,<2024.1
+    - fastapi >=0.100.0,<0.200.0
+    - fsspec >=2021.4
+    - s3fs >=2021.4
     - aiofiles >=22.1.0
     - uvicorn-standard >=0.25.0,<0.26.0
     - watchgod >=0.8.2,<0.9.0
