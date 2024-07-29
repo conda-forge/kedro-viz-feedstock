@@ -1,5 +1,5 @@
 {% set name = "kedro-viz" %}
-{% set version = "9.1.0" %}
+{% set version = "9.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/kedro-org/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: ef695fdbd258bec43ed69222a83f139b1810df6a0f5724b6252da7632de3cc76
+  sha256: 6cb3fe645f92f5164e7c7760e607180e24bf5940b4d7c173c7eaa905e8ced788
 
 build:
   noarch: python
@@ -38,6 +38,8 @@ build:
 requirements:
   host:
     - python >=3.9
+    - hatchling
+    - hatch-requirements-txt
     - pip
     - nodejs >16.0,<21.0
   run:
@@ -50,17 +52,15 @@ requirements:
     - kedro >=0.18.0
     - networkx >=2.5
     - orjson >=3.9,<4.0
-    - packaging >=23.0,<24.0
+    - packaging >=23.0
     - pandas >=1.3
     - plotly >=4.0
     - pydantic >=2.0.0
     - secure >=0.3.0
     - sqlalchemy >=1.4,<3
     - strawberry-graphql >=0.192.0,<1.0
-    - uvicorn-standard >=0.29.0,<0.30.0
-    - watchgod >=0.8.2,<0.9.0
-    # [TODO: Need to drop toposort dependency in favor of in-built graphlib]
-    - toposort >=1.5 # Needs to be at least 1.5 to be able to raise CircularDependencyError
+    - uvicorn-standard >=0.30.0,<1.0
+    - watchgod >=0.8.2,<1.0
     # Added Manually
     - s3fs >=2021.4
 
