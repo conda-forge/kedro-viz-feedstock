@@ -38,6 +38,8 @@ build:
 requirements:
   host:
     - python >=3.9
+    - hatchling
+    - hatch-requirements-txt
     - pip
     - nodejs >16.0,<21.0
   run:
