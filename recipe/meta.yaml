@@ -1,5 +1,5 @@
 {% set name = "kedro-viz" %}
-{% set version = "10.2.0" %}
+{% set version = "11.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/kedro-org/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 204744af2bd7e7857f6e11cf8aa988eea0dd64345fba7ca5c259ed191a5df5c2
+  sha256: e945152836ec97c276dc24c6f3e1d0874d124dc135f6ad3d10f3665c747e93b0
 
 build:
   noarch: python
@@ -33,7 +33,7 @@ build:
 
     - {{ PYTHON }} -m pip install ./package -vv --no-deps --no-build-isolation
 
-  number: 1
+  number: 0
 
 requirements:
   host:
