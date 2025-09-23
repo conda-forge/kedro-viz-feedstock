@@ -28,14 +28,14 @@ build:
     - echo {" --------------------------------------------------------NODE_OPTIONS=--openssl-legacy-provider npm run build ------------------------------------------------------------"}
     - NODE_OPTIONS=--openssl-legacy-provider npm run build
 
-    - echo {" --------------------------------------------------------cp -R build {{ SRC_DIR }}/package/kedro_viz/html ----------------------------------------------------------------"}
-    - cp -R build {{ SRC_DIR }}/package/kedro_viz/html
+    - echo {" --------------------------------------------------------if [ -d dist ]; then cp -R dist {{ SRC_DIR }}/package/kedro_viz/html; else cp -R build {{ SRC_DIR }}/package/kedro_viz/html; fi ----------------------------------------------------------------"}
+    - if [ -d dist ]; then cp -R dist {{ SRC_DIR }}/package/kedro_viz/html; else cp -R build {{ SRC_DIR }}/package/kedro_viz/html; fi
 
     - {{ PYTHON }} -m pip install ./package -vv --no-deps --no-build-isolation
 
   number: 0
 
-requirements:
+requirements:pwd
   host:
     - python {{ python_min }}
     - hatchling
