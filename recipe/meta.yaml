@@ -35,7 +35,7 @@ build:
 
   number: 0
 
-requirements:pwd
+requirements:
   host:
     - python {{ python_min }}
     - hatchling
