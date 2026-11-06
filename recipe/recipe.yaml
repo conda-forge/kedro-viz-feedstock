@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: 12.5.0
+  version: "12.6.0"
 
 package:
   name: kedro-viz
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/k/kedro-viz/kedro_viz-${{ version }}.tar.gz
-  sha256: d107ef009f3f813d73e202f21579f20248f83adb3bafa57f8d19ab5ca0ac947b
+  sha256: eeb1356d31cbe9c95844bf436d9b84d4c21b14accb0dffdb24439d416821d264
 
 build:
   number: 0
